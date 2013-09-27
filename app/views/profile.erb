@@ -10,26 +10,17 @@
       <th>Survery Name</th>
       <th>Results</th>
     </thead>
-    <tr>
-      <% if current_user.surveys %>
-      <% current_user.surveys.each do |survey| %>
-      <td>  <%=survey.name%> </td>
-      <td> <a href="/survey/#{survey.id}/results"> Results </a></td>
-    </tr>
+    
+      <% if @created %>
+      <% @created.each do |survey| %>
+      <tr>
+        <td>  <%=survey.name%> </td>
+        <td> <a href="/survey/#{survey.id}/results"> Results </a></td>
+      </tr>
+      <% end %>
   </ul>
+  <% end %>
 </table>
 
+<br>
 
-
-<h3>Surveys to Take</h3>
-<!-- if current_user id is found in the UserServeys -->
-<ul>
-    <thead>
-      <th>Survery Name</th>
-    </thead>
-      <% if @available %>
-      <% @available.each do |survey| %>
-      <li> 
-        <a href="/survey/#{survey.id}"><%=survey.name%></a>
-      </li>
-</ul>
