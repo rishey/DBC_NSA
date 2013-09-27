@@ -1,6 +1,9 @@
 .container {
   margin: 20px auto;
-  width: 900px;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(59, 89, 152);
+  margin-top: 0;
   /*padding: 0px 20px 20px 20px;*/
 
 }
@@ -13,9 +16,14 @@ nav ul li a{
   text-decoration: none;
 }
 
+.login {
+  width: 50%;
+  display: inline;
+}
 
 .header {
   float:left;
+  color: white;
 }
 
 div.login, div.signup {
@@ -30,9 +38,28 @@ div.login, div.signup {
 .small {
   font-size: 9px;
   text-align: center;
+  color: black;
 }
 
 
 footer {
-  position: fixed;
+  position: absolute;
+  bottom: 0;
+  float: right;
+}
+
+.signup input {
+  width: 300px;
+}
+
+.signup_button {
+  background-color: green;
+  color: white;
+}
+
+.signup {
+  width:320px;
+  position: relative;
+  padding-top: 10px;
+  padding-right: 10px;
 }
