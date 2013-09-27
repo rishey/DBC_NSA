@@ -38,8 +38,8 @@ def seed_surveys
 		end
 	end
 end
-
+seed_users
 seed_surveys
 
-seed_users
+
 # seed_responses
