@@ -1,5 +1,8 @@
 #  GETS #
+get "/create_survey" do
 
+  erb :create_survey
+end
 
 
 
@@ -16,7 +19,7 @@ post "/new_survey" do
         num_questions.times do 
           question = Question.create
           new_survey.questions << question
-            4.times
+            4.times do
               response = Response.create
               question.responses << response
             end
@@ -31,7 +34,10 @@ end
 post "/build_survey" do
   survey_id = session[:survey_id]
   survey = Survey.find(survey_id)
-  survey.questions.each do |question|
-    question.
+  survey.questions.each_with_index do |question, index|
+    question.text = params[:question][:text+"#{index}"]
+      # question.responses.each do |response|
+      #   response.text = params[:question][:response][:text]
+      # end
   end
 end
