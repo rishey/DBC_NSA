@@ -33,12 +33,18 @@ end
 
 
 post "/build_survey" do
-  survey_id = session[:survey_id]
+  puts "Hello"
+  puts params[:survey]
+  survey_id = params[:survey]
   survey = Survey.find(survey_id)
   survey.questions.each_with_index do |question, index|
-    question.text = params[:question][:text+"#{index}"]
-      question.responses.each do |response|
-        response.text = params[:question][:response][:text]
+
+    question.text = params[:question][:"text#{index+1}"]
+    puts question.text
+      question.responses.each_with_index do |response, index|
+        puts params[:response][:"text#{index}"]
+        response.text = params[:response][:"text#{index+1}"]
+        puts response.text
       end
   end
 end 
