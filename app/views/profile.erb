@@ -1,0 +1,25 @@
+<h1>Profile</h1>
+<div><%= current_user.name  %></div> 
+
+
+<h3>Surveys</h3>
+
+<table>
+  <ul>
+    <thead>
+      <th>Survery Name</th>
+      <th>Results</th>
+    </thead>
+    <tr>
+      <% if current_user.surveys %>
+      <% current_user.surveys.each do |survey| %>
+      <td>  <%=survey.name%> </td>
+      <td> <a href="/survey/#{survey.id}/results"> Results </a></td>
+    </tr>
+  </ul>
+</table>
+
+
+
+<h3>Surveys=s to Take</h3>
+<!-- if current_user id is found in the UserServeys
