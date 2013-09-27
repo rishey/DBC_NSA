@@ -19,15 +19,13 @@
 </head>
 <body>
   <div class="container">
-    <nav> 
+    <nav class='navbar'> 
       <ul>
-      <% if current_user %>
-        <li><a href="/sessions/<%= current_user.id %>">Sign Out</a></li>
-        <li><a href="/profile">Profile Page</a></li>
-      <% else %>
-        <li><a href="/signup">Sign Up</a></li>
-      <% end %>
-    </ul>
+        <% if current_user %>
+          <li><a href="/sessions/<%= current_user.id %>">Sign Out</a></li>
+          <li><a href="/profile/#{current_user.id}">Profile Page</a></li>
+        <% end %>
+      </ul>
     </nav>
   <%= yield %>
   </div>

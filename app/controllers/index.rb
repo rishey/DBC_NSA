@@ -35,11 +35,11 @@ end
 
 #----------- USERS -----------
 
-get '/users/new' do
-  # render sign-up page
-  @user = User.new
-  erb :sign_up
-end
+# get '/users/new' do
+#   # render sign-up page
+#   @user = User.new
+#   erb :sign_up
+# end
 
 post '/users' do
   # sign-up
@@ -50,10 +50,13 @@ post '/users' do
     redirect "/profile/#{session[:user_id]}"
   else
     # an error occurred, re-render the sign-up form, displaying errors
-    erb :sign_up
+    redirect '/'
   end
 end
 
 get '/profile/:id' do
+  user = User.find(params[:id])
+  surveys_to_take = user.user_surveys.where(user_id: user.id)
+  @available = surveys_to_take.surveys
   erb :profile
 end

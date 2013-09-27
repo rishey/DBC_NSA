@@ -21,5 +21,15 @@
 
 
 
-<h3>Surveys=s to Take</h3>
-<!-- if current_user id is found in the UserServeys
+<h3>Surveys to Take</h3>
+<!-- if current_user id is found in the UserServeys -->
+<ul>
+    <thead>
+      <th>Survery Name</th>
+    </thead>
+      <% if @available %>
+      <% @available.each do |survey| %>
+      <li> 
+        <a href="/survey/#{survey.id}"><%=survey.name%></a>
+      </li>
+</ul>
