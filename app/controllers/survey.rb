@@ -1,10 +1,11 @@
 #  GETS #
 
 
-get '/test' do
+get '/create_survey' do
   current_user = User.find(1)
   session[:user_id] = 1
-  erb :profile
+  @survey = Survey.find(1)
+  erb :create_survey
 end
 
 
