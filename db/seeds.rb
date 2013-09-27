@@ -42,4 +42,4 @@ end
 seed_surveys
 
 seed_users
-seed_responses
+# seed_responses
