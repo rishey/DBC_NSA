@@ -1,19 +1,38 @@
 .container {
   margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
+  width: 900px;
+  /*padding: 0px 20px 20px 20px;*/
 
 }
 
 nav ul li {
   list-style-type: none;
-
 }
 
 nav ul li a{
   text-decoration: none;
 }
 
-th {
-  text-align: left;
+
+.header {
+  float:left;
+}
+
+div.login, div.signup {
+  float:right;
+}
+
+
+.login input {
+  display: inline-block;
+}
+
+.small {
+  font-size: 9px;
+  text-align: center;
+}
+
+
+footer {
+  position: fixed;
 }
