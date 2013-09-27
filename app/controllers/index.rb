@@ -1,5 +1,16 @@
 get '/' do
+  
   erb :index
+end
+
+get '/survey/new' do
+  if request.xhr?
+    erb :_new_survey, layout: false
+  end
+end
+
+post '/survey/new' do
+  @survey = Survey.create(name: params[:survey])
 end
 
 #----------- SESSIONS -----------
@@ -7,6 +18,7 @@ end
 get '/sessions/new' do
   # render sign-in page
   @email = nil
+  
   erb :sign_in
 end
 
@@ -17,7 +29,7 @@ post '/sessions' do
   if user
     # successfully authenticated; set up session and redirect
     session[:user_id] = user.id
-    redirect '/'
+    redirect "/profile/#{session[:user_id]}"
   else
     # an error occurred, re-render the sign-in form, displaying an error
     @error = "Invalid email or password."
@@ -35,11 +47,6 @@ end
 
 #----------- USERS -----------
 
-# get '/users/new' do
-#   # render sign-up page
-#   @user = User.new
-#   erb :sign_up
-# end
 
 post '/users' do
   # sign-up
@@ -58,7 +65,5 @@ get '/profile/:id' do
   user = User.find(params[:id])
   @created = user.created_surveys
    
-  # surveys_to_take = user.where(user_id: user.id)
-  # @available = surveys_to_take.surveys
    erb :profile
 end

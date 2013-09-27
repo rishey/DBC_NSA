@@ -4,13 +4,13 @@
 
 <h3>Surveys</h3>
 
-<table>
+<table id='survey_table'>
   <ul>
     <thead>
       <th>Survery Name</th>
       <th>Results</th>
     </thead>
-    
+    <tbody>
       <% if @created %>
       <% @created.each do |survey| %>
       <tr>
@@ -20,7 +20,11 @@
       <% end %>
   </ul>
   <% end %>
+  </tbdoy>
 </table>
 
 <br>
+<div>
+<a id='new_survey' href="/survey/new">New Survey</a>
+</div>
 
