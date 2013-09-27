@@ -56,7 +56,9 @@ end
 
 get '/profile/:id' do
   user = User.find(params[:id])
-  surveys_to_take = user.user_surveys.where(user_id: user.id)
-  @available = surveys_to_take.surveys
-  erb :profile
+  @created = user.created_surveys
+   
+  # surveys_to_take = user.where(user_id: user.id)
+  # @available = surveys_to_take.surveys
+   erb :profile
 end
