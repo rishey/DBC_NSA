@@ -1,20 +1,53 @@
-<header> 
-  <h1>DBC National Security Agency</h1>
-  <h3> Offending our Camp Everyday, All Day</h3>
+<header class='header'> 
+  <h1><span class='small'>NSA</span>National Survey Agency</h1>
 </header>
 
+<div class='login'>
  <% if @error %>
     <div class="errors"><%= @error %></div>
   <% end %>
 
-  <form id="sign-in" method="post" action="/sessions">
+  <form class='login' id="sign-in" method="post" action="/sessions">
     <label class="label" for="email">Email</label>
-    <input type="email" name="email" placeholder="e.g., me@example.com" value="<%= @email %>"><br>
+    <input class='login' type="email" name="email" placeholder="e.g., me@example.com" value="<%= @email %>"><br>
     <label class="label" for="password">Password</label>
-    <input type="password" name="password" placeholder="6 or more characters">
+    <input class='login' type="password" name="password" placeholder="6 or more characters">
     <br>
-    <div class="submit"><input type="submit" value="Sign In"></div>
+    <div class='login'><input type="submit" value="Sign In"></div>
   </form>
+</div>
 
 
 
+
+<div class='signup'>
+<h1 class='signup'>Sign Up</h1>
+
+  <!-- <div id="errors"><%# erb :_model_errors, :layout => false, :locals => { :model => @user } %></div> -->
+
+  <form class='signup' id="sign-up" method="post" action="/users">
+    <label class="label" for="name">Name</label>
+    <input class='signup' type="text" name="user[name]" placeholder="e.g., joe" value="<%# @user.name %>">
+    <span id="name-errors" class="errors"></span>
+    <br>
+
+    <label class="label" for="email">Email</label>
+    <input class='signup' type="email" name="user[email]" placeholder="e.g., me@example.com" value="<%# @user.email %>">
+    <span id="email-errors" class="errors"></span>
+    <br>
+
+    <label class="label" for="password">Password</label>
+    <input class='signup' type="password" name="user[password]" placeholder="6 or more characters">
+    <span id="entered_password-errors" class="errors"></span>    
+    <br>
+
+    <div class='signup'><input type="submit" value="Sign Up"></div>
+  </form>
+</div>
+
+<footer>
+  <span class='small'>
+    No affiliation to books whatsoever
+    <p> We reserve the right to collect your information and use it how we see fit.</p>
+  </span>
+</footer>
