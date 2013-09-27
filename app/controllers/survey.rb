@@ -1,11 +1,11 @@
 #  GETS #
-get "/create_survey" do
 
-  erb :create_survey
+
+get '/test' do
+  current_user = User.find(1)
+  session[:user_id] = 1
+  erb :profile
 end
-
-
-
 
 
 
@@ -36,8 +36,8 @@ post "/build_survey" do
   survey = Survey.find(survey_id)
   survey.questions.each_with_index do |question, index|
     question.text = params[:question][:text+"#{index}"]
-      # question.responses.each do |response|
-      #   response.text = params[:question][:response][:text]
-      # end
+      question.responses.each do |response|
+        response.text = params[:question][:response][:text]
+      end
   end
 end 
