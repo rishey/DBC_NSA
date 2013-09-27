@@ -5,6 +5,21 @@ get '/create_survey' do
   current_user = User.find(1)
   session[:user_id] = 1
   @survey = Survey.find(1)
+  4.times do 
+    @survey.questions << Question.new
+  end
+  @survey.questions.each do |question|
+    4.times do 
+      question.choices << Choice.create
+    end
+  end
+  #   question = Question.create
+  #     @survey.questions << question
+  #       4.times do
+  #         choice = Choice.create
+  #         question.choices << choice
+  #       end
+  #   end
   erb :create_survey
 end
 
@@ -15,17 +30,20 @@ end
 post "/new_survey" do 
   new_survey = Survey.create(params[:survey])
     if new_survey.valid? 
-      session[:survey_id] = new_survey.id
+      @user = User.find(session[:user_id])
       num_questions = params[:num_questions]
-        num_questions.times do 
-          question = Question.create
-          new_survey.questions << question
-            4.times do
-              response = Response.create
-              question.responses << response
-            end
-        end
-        redirect "/create_survey"
+      
+      num_questions.times do 
+        question = Question.create
+        new_survey.questions << question
+      end
+
+      new_survey.questions.each do |question|
+        choice = Choice.create
+        question.choices << choice
+      end
+      
+      redirect "/create_survey"
     else
       redirect "/user_profile"
     end
@@ -38,13 +56,9 @@ post "/build_survey" do
   survey_id = params[:survey]
   survey = Survey.find(survey_id)
   survey.questions.each_with_index do |question, index|
-
-    question.text = params[:question][:"text#{index+1}"]
-    puts question.text
-      question.responses.each_with_index do |response, index|
-        puts params[:response][:"text#{index}"]
-        response.text = params[:response][:"text#{index+1}"]
-        puts response.text
+    Question.find(question.id).update_attributes(text: params[:question][:"text#{index+1}"])
+      question.choices.each_with_index do |choice, index|
+        Choice.find(choice.id).update_attributes(choice: params[:choice][:"choice#{index+1}"])        
       end
   end
 end 
