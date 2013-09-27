@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   validates :entered_password, :length => { :minimum => 6 }
   validates :email, :uniqueness => true, :format => /.+@.+\..+/ # imperfect, but okay
 
+  has_many :created_surveys, class_name: "Survey", foreign_key: :creator_id
+  has_many :responses, class_name: "Response", foreign_key: :participant_id
+  has_many :questions, through: :survey
+
   include BCrypt
 
   def password
