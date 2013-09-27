@@ -1,0 +1,17 @@
+<h1>create survey</h1>
+<h2>survey name: <%= @survey.name %></h2>
+<!--  one survey; X questions; 4 answers -->
+<% @survey.questions.each_with_index do |question, index| %>
+  <form action = "/build_survey" method="POST">
+    <div class="each_question">
+      <label for="question<%= index %> ">Question #<%= index %></label>
+      <input id="question<%= index %>" type="text" name="question[text<%= index %>">
+        <% question.responses.each_with_index do %>
+        <label for="response<%= index  %>">Response <%= index %></label>
+        <input id="response<%= index  %>" type="text" name="response[text<%= index %>">
+        <% end %>
+    <div>
+      <% end %>
+    <input type="Submit">
+  </form>
+
