@@ -1,8 +1,0 @@
-<!-- expects to be passed @question and @choices for that question -->
-<form  action="/upload" method="post" id="multi-partial" >
-<%= @question.text %>
-<% @choices.each_with_index |choice,index| do %>
-	 <input type="radio" name="choice<%= index %>" value="choice<%= index %>"><%= @choice.choice %><br>
-<% end %>
-<input type="submit" value="Submit">
-</form>
