@@ -19,10 +19,8 @@
 </head>
 <body>
   <div class="container">
-    <header class='header'> 
-  <h1><span class='small'>NSA  </span>national survey agency</h1>
-</header>
-    <nav class='navbar'> 
+  <nav class='navbar'>
+  <h1 class='header'><span class='small'>NSA  </span>national survey agency</h1> 
       <ul>
         <% if current_user %>
           <li><a id='sign-out' href="/sessions/<%= current_user.id %>">Sign Out</a></li>
