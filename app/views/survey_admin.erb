@@ -3,10 +3,10 @@
 <h3>Survey id: <%= @survey.id %></h3>
 <!--  one survey; X questions; 4 answers -->
 
-<form action = "/survey/add_users">
+<!-- <form action = "/survey/add_users">
   <input type="text" name="user" 
 
-</form>
+</form> -->
 
 <% @survey.questions.each_with_index do |question, index| %>
   <div>
