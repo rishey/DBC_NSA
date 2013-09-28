@@ -8,9 +8,11 @@ end
 
 
 post "/multi" do
-p params
-puts "HERE"
-puts params[:question_id]
+@survey = params[:survey_id]
+@survey.questions.each_with_index do |question, index|
+  question.choices.each_with_index do |choice|
+    
+
 question = Question.find(params[:question_id].to_i)
 choice = params[:question].to_i
 response = Response.create(choice_id: choice, participant_id: params[:participant_id].to_i)
