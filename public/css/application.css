@@ -13,15 +13,36 @@
 
 nav ul li {
   list-style-type: none;
+  float: right;
+  padding-top: 10px;
 }
 
 nav ul li a{
   text-decoration: none;
+  color: white;
+  padding-right: 30px;
 }
 
 .navbar ul{
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+}
+
+.navbar span{
+  padding-left: 100px;
+}
+
+.profile{
+  float: left;
+  margin-top: 130px;
+}
+
+.profile h1{
+  margin: 0 0 0 0;
+}
+
+.errors {
+  color: white;
 }
 
 .login {
@@ -45,14 +66,13 @@ nav ul li a{
   padding-right: 192px;
 }
 
+.login div {
+  padding-top: 10px;
+}
+
 .header {
   float:left;
   color: white;
-  position: fixed;
-}
-
-.header span{
-  padding-left: 100px;
 }
 
 
@@ -75,14 +95,47 @@ nav ul li a{
 
 .signup{
   float: right;
-  padding: 75px 100px 0 500px;
+  padding: 75px 175px 0 500px;
 }
 
 .signup div {
-  width: 500px;
+  width: 300px;
+  margin-bottom: 12px;
+}
+
+.signup h1{
+  margin-bottom: 10px;
+}
+
+.signup span:first-of-type{
+  font-size: 11px;
+}
+
+.signup div:first-of-type{
+  margin-top: 10px;
+}
+
+.signup input{
+  float: right;
+ -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 
+.signup div:nth-of-type(4) input{
+  float: left;
+}
+
+.survey_form input{
+   -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.survey_form input:nth-child(2){
+  width: 172px;
+}
 
 footer {
   position: absolute;
