@@ -15,7 +15,7 @@ $(document).ready(function() {
         var url = $(this).attr('href');
 
         $.get(url, function(response){
-          $('.container').append(response);
+          $('.profile').append(response);
         });
 
     });
