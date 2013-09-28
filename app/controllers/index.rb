@@ -28,6 +28,7 @@ post '/sessions' do
   if user
     # successfully authenticated; set up session and redirect
     session[:user_id] = user.id
+    user.update_attributes(updated_at: Time.now)
     redirect "/profile/#{session[:user_id]}"
   else
     # an error occurred, re-render the sign-in form, displaying an error
