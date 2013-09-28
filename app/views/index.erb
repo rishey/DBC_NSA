@@ -1,23 +1,25 @@
-<div class='login'>
  <% if @error %>
     <div class="errors"><%= @error %></div>
   <% end %>
 
+<!-- <div class='login'> -->
+
   <form class='login' id="sign-in" method="post" action="/sessions">
-    <label class="label" for="email">Email</label>
-    <input class='login' type="email" name="email" placeholder="e.g., me@example.com" value="<%= @email %>"><br>
-    <label class="label" for="password">Password</label>
+    <label class="login" for="email">Email</label>
+    <input class='login' type="email" name="email" placeholder="e.g., me@example.com" value="<%= @email %>">
+    <label class="login" for="password">Password</label>
     <input class='login' type="password" name="password" placeholder="6 or more characters">
     <br>
     <div class='login'><input type="submit" value="Sign In"></div>
   </form>
-</div>
+<!-- </div> -->
 
 
 
 
 <div class='signup'>
 <h1 class='signup'>Sign Up</h1>
+<p class='small'>We archive everything you do and always will!</p>
 
   <!-- <div id="errors"><%# erb :_model_errors, :layout => false, :locals => { :model => @user } %></div> -->
 
