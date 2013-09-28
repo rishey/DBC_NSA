@@ -1,21 +1,15 @@
-<h1>Thank you for taking the @survey.name survey!</h1>
+<h1>Thank you for taking the <%= @survey.name %> survey!</h1>
 
-<form  action="/multi" method="post" id="multi-partial" >
+<form  action="/participant_submit" method="post" id="multi-partial" >
 <% @survey.questions.each_with_index do |question, index| %> 
 <div>
-<h5><%= question.text %></h6>
+<h4><%= question.text %></h4>
 <% question.choices.each_with_index do |choice, index2|  %>
    <input type="radio" name="question[<%= index %>]"   value="<%= choice.id %>"><%= choice.choice %><br>
 <% end %>
-<!-- 
-
-<input type ="hidden" name = "question_id" value="<%= @question.id %>">
-<input type ="hidden" name = "participant_id" value="<%= @user.id %>">
-
-
- -->
-
-<input type="hidden" name="survey_id" value="<%= @survey.id %>"
-<input type="submit" value="Submit">
+</div>
+<% end %>
+<input type="hidden" name="survey_id" value="<%= @survey.id %>">
+<input type="submit" value="submit">
 </form>
 

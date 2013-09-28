@@ -22,8 +22,13 @@ end
 
 get '/survey/:id' do
   @survey = Survey.find(params[:id].to_i)
-
   erb :participant_survey
+end
+
+get '/survey/completed/:id' do
+  @survey = Survey.find(params[:id].to_i)
+  @user = User.find(session[:user_id])
+  erb :survey_complete
 end
 
 # POSTS #
@@ -66,3 +71,12 @@ post "/build_survey" do
   end
   redirect "/survey/admin/#{survey.id}"
 end 
+
+post "/participant_submit" do
+  @survey = Survey.find(params[:survey_id].to_i)
+  @survey.questions.each_with_index do |question, index|
+    response = Response.create(choice_id: params[:question][:"#{index}"], participant_id: session[:user_id])
+      redirect "/survey/#{@survey.id}" if !response.valid?
+    end
+  redirect "/survey/completed/#{@survey.id}"
+end

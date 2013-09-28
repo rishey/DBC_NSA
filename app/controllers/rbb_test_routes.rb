@@ -8,8 +8,12 @@ end
 
 
 post "/multi" do
-@survey = params[:survey_id]
-puts questions = params[:question]
+@survey = Survey.find(params[:survey_id].to_i)
+@survey.questions.each_with_index do |question, index|
+  Response.create(choice_id: params[:question][:"#{index}"], participant_id: session[:user_id])
+
+end
+
 
 # Response.create()
 
