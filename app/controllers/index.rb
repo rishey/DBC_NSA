@@ -63,14 +63,14 @@ post '/users' do
 end
 
 get '/profile/:id' do
-  if session[:user_id] == params[:id].to_i
+  if session[:user_id] != params[:id].to_i
+    redirect '/'
+  else
     user = User.find(params[:id])
     @created = user.created_surveys
     @available = Survey.all
     @available.delete_if {|survey| survey.creator_id == user.id || survey.participants.any?{|participant| participant.id == user.id} }
 
     erb :profile
-  else
-    redirect '/'
   end
 end
