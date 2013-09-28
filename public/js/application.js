@@ -19,16 +19,32 @@ $(document).ready(function() {
         });
 
     });
-    $('.container').on('submit', '#new_survey_form', function(e) {
+    $('#new_survey_form').submit(function(e) {
       e.preventDefault();
+      $(this).hide();
 
       var url = $(this).attr('action');
       var data = $(this).serialize();
-
+      
       $.post(url, data, function(response) {
-        $('tbody').append(response);
+        $('.profile').append(response);
       });
-      $(this).remove();
-      $('#new_survey').show();
+      // $(this).remove();
+      // $('#new_survey').show();
     });
+
+    $('#create_survey').submit(function(e) {
+      e.preventDefault();
+      $(this).hide();
+      
+      var url = $(this).attr('action');
+      var data = $(this).serialize();
+      
+      $.post(url, data, function(response) {
+        $('.profile').append(response);
+      });
+      // $(this).remove();
+      // $('#new_survey').show();
+    });
+
 });
