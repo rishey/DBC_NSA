@@ -1,0 +1,9 @@
+<!-- expects to be passed @question and @choices for that question -->
+<form  action="/multi" method="post" id="multi-partial" >
+<br><br><br><br><br><br><br><br><br><br><br>
+<%= @question.text %><br>
+<% @choices.each_with_index do |choice, index|  %>
+	 <input type="radio" name="<%= @question.id %>" value="<%= choice.id %>"><%= choice.choice %><br>
+<% end %>
+<input type="submit" value="Submit">
+</form>
