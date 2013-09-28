@@ -1,0 +1,21 @@
+<h1>Survey Admin</h1>
+<h2>Survey name: <%= @survey.name %></h2>
+<h3>Survey id: <%= @survey.id %></h3>
+<!--  one survey; X questions; 4 answers -->
+
+<form action = "/survey/add_users">
+  <input type="text" name="user" 
+
+</form>
+
+<% @survey.questions.each_with_index do |question, index| %>
+  <div>
+  <h3>Question #<%= index + 1 %></h3>
+      <p><%= question.text %></p>
+        <ul>        
+          <% question.choices.each_with_index do |choice, index| %>
+            <li><span>Option <%= index + 1 %>.</span> <%= choice.choice %></li>
+          <% end %>
+        </ul>
+  </div>
+<% end %>
