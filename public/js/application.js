@@ -16,22 +16,38 @@ $(document).ready(function() {
 
         $.get(url, function(response){
           $('.profile').append(response);
+
+          $('#new_survey2').submit(function(e) {
+    
+          e.preventDefault();
+          $(this).hide();
+          var url = $(this).attr('action');
+          var data = $(this).serialize();
+          // console.log(url);
+          // console.log(data);
+            $.post(url, data, function(response) {
+            window.alert(response);
+            $('.profile').append(response);
+            });
+          });
         });
+   });
+    // $('#test').submit(function(e) {
+    //   console.log(e);
+    //   e.preventDefault();
+    //   $(this).hide();
 
-    });
-    $('#new_survey_form').submit(function(e) {
-      e.preventDefault();
-      $(this).hide();
-
-      var url = $(this).attr('action');
-      var data = $(this).serialize();
-      
-      $.post(url, data, function(response) {
-        $('.profile').append(response);
-      });
-      // $(this).remove();
-      // $('#new_survey').show();
-    });
+    //   var url = $(this).attr('action');
+    //   var data = $(this).serialize();
+    //   console.log(url);
+    //   console.log(data);
+      // $.post(url, data, function(response) {
+      //   window.alert(response)
+      //   $('.profile').append(response);
+      // });
+      // // $(this).remove();
+      // $('create_survey').show();
+    // });
 
     $('#create_survey').submit(function(e) {
       e.preventDefault();

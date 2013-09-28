@@ -51,11 +51,13 @@ post "/survey/new" do
           question.choices << choice
         end
       end
+      
       if request.accept?
         erb :_create_survey, layout: false
       else
         redirect "/_create_survey/#{@survey.id}"
       end
+    
     else
       redirect "/user_profile"
     end
