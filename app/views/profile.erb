@@ -1,14 +1,11 @@
-/<div class='profile' id='profile'>
+<div class='profile' id='profile'>
   <h1>profile</h1>
   <span>welcome back <%= current_user.name %></span></br>
-  <!-- <span>last login <%# current_user.updated_at.strftime("%m-%d-%Y %I:%M%p") %></span>  -->
 
-
-<h3>Available Participant Surveys</h3>
+<h3>Available participant surveys</h3>
 <table id='participant_survey_table'>
-  
     <thead>
-      <th>Survey Name</th>
+      <th>Name</th>
       <th>Take Survey</th>
     </thead>
     <tbody>
@@ -19,34 +16,31 @@
         <td> <a href="#"> Take the survey </a></td>
       </tr>
       <% end %>
-  
   <% end %>
   </tbody>
 </table>
 
-<h3>Created Surveys</h3>
+<h3>Your created surveys</h3>
 
 <table id='survey_table'>
-  <ul>
     <thead>
-      <th>Survey Name</th>
+      <th>Name</th>
       <th>Results</th>
     </thead>
     <tbody>
       <% if @created %>
-      <% @created.each do |survey| %>
+        <% @created.each do |survey| %>
       <tr>
         <td>  <%=survey.name%> </td>
-        <td> <a href="/survey/#{survey.id}/results"> Results </a></td>
+        <td> <a href="/survey/<%=survey.id%>/results"> Results </a></td>
       </tr>
       <% end %>
-  </ul>
   <% end %>
   </tbody>
 </table>
 
 <br>
-<div>
+<div class=''>
 <a id='new_survey' href="/survey/new">New Survey</a>
 </div>
 
