@@ -16,7 +16,7 @@
       <% @available.each do |survey| %>
       <tr>
         <td>  <%=survey.name%> </td>
-        <td> <a href="#"> Take the survey! </a></td>
+        <td> <a href="/survey/<%= survey.id %>"> Take the survey! </a></td>
       </tr>
       <% end %>
   </ul>

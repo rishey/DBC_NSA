@@ -65,13 +65,9 @@ get '/profile/:id' do
   if session[:user_id] == params[:id].to_i
     user = User.find(params[:id])
     @created = user.created_surveys
-    @available = []
-    all_surveys = Survey.all
-    all_surveys.each do |survey|
-      if survey.creator_id != params[:id].to_i
-        @available << survey
-      end
-    end
+    @available = Survey.all
+    @available.delete_if {|survey| survey.creator_id == user.id || survey.participants.any?{|participant| participant.id == user.id} }
+
     erb :profile
   else
     redirect '/'
