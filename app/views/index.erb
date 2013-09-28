@@ -2,50 +2,46 @@
     <div class="errors"><%= @error %></div>
   <% end %>
 
-<!-- <div class='login'> -->
-
   <form class='login' id="sign-in" method="post" action="/sessions">
-    <label class="login" for="email">Email</label>
-    <input class='login' type="email" name="email" placeholder="e.g., me@example.com" value="<%= @email %>">
-    <label class="login" for="password">Password</label>
-    <input class='login' type="password" name="password" placeholder="6 or more characters">
+    <label for="email">Email</label>
+    <label for="password">Password</label>
     <br>
-    <div class='login'><input type="submit" value="Sign In"></div>
+    <input type="email" name="email" placeholder="e.g., me@example.com" value="<%= @email %>">
+    <input type="password" name="password" placeholder="6 or more characters">
+    <input class='signin_button' type="submit" value="Sign In">
   </form>
-<!-- </div> -->
 
 
 
-
-<div class='signup'>
-<h1 class='signup'>Sign Up</h1>
-<p class='small'>We archive everything you do and always will!</p>
-
-  <!-- <div id="errors"><%# erb :_model_errors, :layout => false, :locals => { :model => @user } %></div> -->
-
+<!-- <div id="errors"><%# erb :_model_errors, :layout => false, :locals => { :model => @user } %></div> -->
   <form class='signup' id="sign-up" method="post" action="/users">
-    <label class="label" for="name">Name</label>
-    <input class='signup' type="text" name="user[name]" placeholder="e.g., joe" value="<%# @user.name %>">
-    <span id="name-errors" class="errors"></span>
-    <br>
+  <h1>Sign Up</h1>
+  <span class='small'>We archive everything you do and always will!</span>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="user[name]" placeholder="e.g., joe" value="<%# @user.name %>">
+      <span id="name-errors" class="errors"></span>
+    </div>
+  
 
-    <label class="label" for="email">Email</label>
-    <input class='signup' type="email" name="user[email]" placeholder="e.g., me@example.com" value="<%# @user.email %>">
-    <span id="email-errors" class="errors"></span>
-    <br>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="user[email]" placeholder="e.g., me@example.com" value="<%# @user.email %>">
+      <span id="email-errors" class="errors"></span>
+    </div>
 
-    <label class="label" for="password">Password</label>
-    <input class='signup' type="password" name="user[password]" placeholder="6 or more characters">
-    <span id="entered_password-errors" class="errors"></span>    
-    <br>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="user[password]" placeholder="6 or more characters">
+      <span id="entered_password-errors" class="errors"></span>    
+    </div>
 
-    <div class='signup'><input class='signup_button' type="submit" value="Sign Up"></div>
+    <div><input class='signup_button' type="submit" value="Sign Up"></div>
   </form>
-</div>
+
 
 <footer>
   <span class='small'>
-    No affiliation to books whatsoever
     <p> We reserve the right to collect your information and use it how we see fit.</p>
   </span>
 </footer>
