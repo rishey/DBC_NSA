@@ -34,25 +34,28 @@ end
 # POSTS #
 
 post "/survey/new" do 
-  new_survey = Survey.create(name: params[:survey])
-    if new_survey.valid? 
+  @survey = Survey.create(name: params[:survey])
+    if @survey.valid? 
       @user = User.find(session[:user_id])
-      @user.created_surveys << new_survey
+      @user.created_surveys << @survey
       num_questions = params[:num_questions].to_i
       
       num_questions.times do 
         question = Question.create
-        new_survey.questions << question
+        @survey.questions << question
       end
 
-      new_survey.questions.each do |question|
+      @survey.questions.each do |question|
         4.times do
           choice = Choice.create
           question.choices << choice
         end
       end
-      
-      redirect "/create_survey/#{new_survey.id}"
+      if request.accept?
+        erb :_create_survey, layout: false
+      else
+        redirect "/_create_survey/#{@survey.id}"
+      end
     else
       redirect "/user_profile"
     end
