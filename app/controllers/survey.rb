@@ -20,6 +20,11 @@ get '/survey/admin/:id' do
   end
 end
 
+get '/survey/:id' do
+  @survey = Survey.find(params[:id].to_i)
+
+  erb :participant_survey
+end
 
 # POSTS #
 

@@ -9,12 +9,17 @@ end
 
 post "/multi" do
 @survey = params[:survey_id]
-@survey.questions.each_with_index do |question, index|
-  question.choices.each_with_index do |choice|
-    
+puts questions = params[:question]
 
-question = Question.find(params[:question_id].to_i)
-choice = params[:question].to_i
-response = Response.create(choice_id: choice, participant_id: params[:participant_id].to_i)
-redirect "/"
+# Response.create()
+
+
+# @survey.questions.each_with_index do |question, index|
+#   question.choices.each_with_index do |choice|
+#     question = Question.find
+
+# question = Question.find(params[:question_id].to_i)
+# choice = params[:question].to_i
+# response = Response.create(choice_id: choice, participant_id: params[:participant_id].to_i)
+# redirect "/"
 end

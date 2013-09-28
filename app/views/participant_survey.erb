@@ -5,15 +5,15 @@
 <div>
 <h5><%= question.text %></h6>
 <% question.choices.each_with_index do |choice, index2|  %>
-   <input type="radio" name="question<%= index %>"   value="<%= choice.id %>"><%= choice.choice %><br>
+   <input type="radio" name="question[<%= index %>]"   value="<%= choice.id %>"><%= choice.choice %><br>
 <% end %>
-
+<!-- 
 
 <input type ="hidden" name = "question_id" value="<%= @question.id %>">
 <input type ="hidden" name = "participant_id" value="<%= @user.id %>">
 
 
-
+ -->
 
 <input type="hidden" name="survey_id" value="<%= @survey.id %>"
 <input type="submit" value="Submit">
