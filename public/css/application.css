@@ -45,11 +45,19 @@ nav ul li a{
   color: white;
 }
 
+.error ul{
+  list-style-type: none;  
+}
+
+.error li{
+  font-size: 13px;
+  color: rgb(59, 89, 152);
+}
+
 .login {
-  width: 50%;
   margin: 0 0 0 0;
   padding-top: 13px;
-  float:right;
+  float: right;
 }
 
 .login label {
@@ -75,7 +83,6 @@ nav ul li a{
   color: white;
 }
 
-
 .signup_button, .spy_button, .signin_button {
   border: 1px solid;
   border-color: #3b6e22 #3b6e22 #2c5115;
@@ -94,8 +101,9 @@ nav ul li a{
 }
 
 .signup{
+  clear: both;
   float: right;
-  padding: 75px 175px 0 500px;
+  padding-right: 233px;
 }
 
 .signup div {
@@ -122,9 +130,12 @@ nav ul li a{
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
+.signup div:nth-of-type(4){
+  margin-bottom: 50px;
+}
 
 .signup div:nth-of-type(4) input{
-  float: left;
+  float: left;  
 }
 
 .survey_form input{
