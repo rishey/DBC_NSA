@@ -1,8 +1,27 @@
 <h1>Profile</h1>
 <div><%= current_user.name  %></div> 
 
+<h3>Available Participant Surveys</h3>
+<table id='participant_survey_table'>
+  <ul>
+    <thead>
+      <th>Survery Name</th>
+      <th>Take Survey!</th>
+    </thead>
+    <tbody>
+      <% if @available %>
+      <% @available.each do |survey| %>
+      <tr>
+        <td>  <%=survey.name%> </td>
+        <td> <a href="#"> Take the survey! </a></td>
+      </tr>
+      <% end %>
+  </ul>
+  <% end %>
+  </tbdoy>
+</table>
 
-<h3>Surveys</h3>
+<h3>Created Surveys</h3>
 
 <table id='survey_table'>
   <ul>
