@@ -1,8 +1,8 @@
-<h1>profile</h1>
-<div>
+<div class='profile' id='profile'>
+  <h1>profile</h1>
   <span>welcome back <%= current_user.name %></span></br>
   <span>last login <%= current_user.updated_at.strftime("%m-%d-%Y %I:%M%p") %></span> 
-</div> 
+
 
 <h3>Available Participant Surveys</h3>
 <table id='participant_survey_table'>
@@ -42,7 +42,7 @@
       <% end %>
   </ul>
   <% end %>
-  </tbdoy>
+  </tbody>
 </table>
 
 <br>
@@ -50,3 +50,4 @@
 <a id='new_survey' href="/survey/new">New Survey</a>
 </div>
 
+</div> 

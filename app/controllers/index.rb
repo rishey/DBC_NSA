@@ -32,8 +32,9 @@ post '/sessions' do
     redirect "/profile/#{session[:user_id]}"
   else
     # an error occurred, re-render the sign-in form, displaying an error
-    @error = "Invalid email or password."
-   redirect '/'
+    @error = "Invalid email or password"
+    erb :index
+   # redirect '/'
   end
 end
 
