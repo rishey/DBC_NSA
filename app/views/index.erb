@@ -35,9 +35,19 @@
       <span id="entered_password-errors" class="errors"></span>    
     </div>
 
-    <div><input class='signup_button' type="submit" value="Sign Up"></div>
+    <div>
+      <input class='signup_button' type="submit" value="Sign Up">
+    </div>
+    <% if @errors %>
+    <div class='error'>
+    <% @errors.each do |error, message| %>
+      <ul>
+        <li><%= error.upcase %> <%= message %></li>
+      </ul>
+    <% end %>
+   </div>
+  <% end %>
   </form>
-
 
 <footer>
   <span class='small'>

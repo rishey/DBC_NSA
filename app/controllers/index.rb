@@ -27,14 +27,13 @@ post '/sessions' do
   user = User.authenticate(@email, params[:password])
   if user
     # successfully authenticated; set up session and redirect
+    # user.update_attributes(updated_at: Time.now)
     session[:user_id] = user.id
-    user.update_attributes(updated_at: Time.now)
     redirect "/profile/#{session[:user_id]}"
   else
     # an error occurred, re-render the sign-in form, displaying an error
     @error = "Invalid email or password"
     erb :index
-   # redirect '/'
   end
 end
 
@@ -58,7 +57,8 @@ post '/users' do
     redirect "/profile/#{session[:user_id]}"
   else
     # an error occurred, re-render the sign-up form, displaying errors
-    redirect '/'
+    @errors = @user.errors
+    erb :index
   end
 end
 
