@@ -3,9 +3,7 @@
 
 get '/create_survey/:id' do
   @survey = Survey.find(params[:id])
-  creator_id = 1
-  puts @survey.creator_id
-  puts session[:user_id]
+
   if @survey.creator_id == session[:user_id]
     erb :create_survey
   else
@@ -13,6 +11,14 @@ get '/create_survey/:id' do
   end
 end
 
+get '/survey/admin/:id' do
+  @survey = Survey.find(params[:id].to_i)
+  if @survey.creator_id == session[:user_id]
+    erb :survey_admin
+  else
+    redirect '/'
+  end
+end
 
 
 # POSTS #
@@ -30,8 +36,10 @@ post "/survey/new" do
       end
 
       new_survey.questions.each do |question|
-        choice = Choice.create
-        question.choices << choice
+        4.times do
+          choice = Choice.create
+          question.choices << choice
+        end
       end
       
       redirect "/create_survey/#{new_survey.id}"
@@ -42,14 +50,14 @@ end
 
 
 post "/build_survey" do
-  puts "Hello"
-  puts params[:survey]
   survey_id = params[:survey]
   survey = Survey.find(survey_id)
   survey.questions.each_with_index do |question, index|
-    Question.find(question.id).update_attributes(text: params[:question][:"text#{index+1}"])
-      question.choices.each_with_index do |choice, index|
-        Choice.find(choice.id).update_attributes(choice: params[:choice][:"choice#{index+1}"])        
-      end
+    question.update_attributes(text: params[:question][:"text#{index}"])
+    
+    question.choices.each_with_index do |choice, index2|
+      choice.update_attributes(choice: params[:"response#{index}"][:"choice#{index2}"])        
+    end
   end
+  redirect "/survey/admin/#{survey.id}"
 end 
