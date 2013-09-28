@@ -1,37 +1,28 @@
 #  GETS #
 
 
-get '/create_survey' do
-  current_user = User.find(1)
-  session[:user_id] = 1
-  @survey = Survey.find(1)
-  4.times do 
-    @survey.questions << Question.new
+get '/create_survey/:id' do
+  @survey = Survey.find(params[:id])
+  creator_id = 1
+  puts @survey.creator_id
+  puts session[:user_id]
+  if @survey.creator_id == session[:user_id]
+    erb :create_survey
+  else
+    redirect '/'
   end
-  @survey.questions.each do |question|
-    4.times do 
-      question.choices << Choice.create
-    end
-  end
-  #   question = Question.create
-  #     @survey.questions << question
-  #       4.times do
-  #         choice = Choice.create
-  #         question.choices << choice
-  #       end
-  #   end
-  erb :create_survey
 end
 
 
 
 # POSTS #
 
-post "/new_survey" do 
-  new_survey = Survey.create(params[:survey])
+post "/survey/new" do 
+  new_survey = Survey.create(name: params[:survey])
     if new_survey.valid? 
       @user = User.find(session[:user_id])
-      num_questions = params[:num_questions]
+      @user.created_surveys << new_survey
+      num_questions = params[:num_questions].to_i
       
       num_questions.times do 
         question = Question.create
@@ -43,7 +34,7 @@ post "/new_survey" do
         question.choices << choice
       end
       
-      redirect "/create_survey"
+      redirect "/create_survey/#{new_survey.id}"
     else
       redirect "/user_profile"
     end

@@ -5,13 +5,12 @@ end
 
 get '/survey/new' do
   if request.xhr?
-    erb :_new_survey, layout: false
+    erb :_survey_form, layout: false
+  else  
+    erb :new_survey
   end
 end
 
-post '/survey/new' do
-  @survey = Survey.create(name: params[:survey])
-end
 
 #----------- SESSIONS -----------
 
