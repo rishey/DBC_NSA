@@ -18,6 +18,8 @@ gem 'bcrypt-ruby'
 
 gem 'shotgun'
 
+gem 'json'
+
 group :test do
   gem 'faker'
   gem 'rspec'
