@@ -17,7 +17,7 @@ $(document).ready(function() {
         $.get(url, function(response){
           $('.profile').append(response);
 
-          $('#new_survey2').submit(function(e) {
+          $('#create_new_survey').submit(function(e) {
     
           e.preventDefault();
           $(this).hide();
@@ -49,7 +49,7 @@ $(document).ready(function() {
       // $('create_survey').show();
     // });
 
-    $('#create_survey').submit(function(e) {
+    $('#build_survey').submit(function(e) {
       e.preventDefault();
       $(this).hide();
       

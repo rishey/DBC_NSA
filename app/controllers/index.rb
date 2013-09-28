@@ -5,9 +5,9 @@ end
 
 get '/survey/new' do
   if request.xhr?
-    erb :_survey_form, layout: false
+    erb :_create_survey, layout: false
   else  
-    erb :new_survey
+    erb :_create_survey
   end
 end
 

@@ -13,7 +13,7 @@
       <% @available.each do |survey| %>
       <tr>
         <td>  <%=survey.name%> </td>
-        <td> <a href="#"> Take the survey </a></td>
+        <td> <a href="/survey/<%= survey.id %>"> Take the survey </a></td>
       </tr>
       <% end %>
   <% end %>
@@ -32,7 +32,7 @@
         <% @created.each do |survey| %>
       <tr>
         <td>  <%=survey.name%> </td>
-        <td> <a href="/survey/<%=survey.id%>/results"> Results </a></td>
+        <td> <a href="/stats/survey/<%=survey.id%>"> Results </a></td>
       </tr>
       <% end %>
   <% end %>

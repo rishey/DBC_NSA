@@ -5,7 +5,7 @@ get '/create_survey/:id' do
   @survey = Survey.find(params[:id])
 
   if @survey.creator_id == session[:user_id]
-    erb :create_survey
+    erb :_create_survey
   else
     redirect '/'
   end
@@ -53,9 +53,9 @@ post "/survey/new" do
       end
       
       if request.accept?
-        erb :_create_survey, layout: false
+        erb :_build_survey, layout: false
       else
-        redirect "/_create_survey/#{@survey.id}"
+        redirect "/_build_survey/#{@survey.id}"
       end
     
     else
@@ -77,6 +77,7 @@ post "/build_survey" do
   redirect "/survey/admin/#{survey.id}"
 end 
 
+
 post "/participant_submit" do
   @survey = Survey.find(params[:survey_id].to_i)
   @survey.questions.each_with_index do |question, index|
@@ -85,3 +86,4 @@ post "/participant_submit" do
     end
   redirect "/survey/completed/#{@survey.id}"
 end
+
