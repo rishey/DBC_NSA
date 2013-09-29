@@ -45,6 +45,7 @@ $(document).ready(function() {
         });
    });
 
+  
 
   $("#survey_take").submit(function(e){
     e.preventDefault();
@@ -55,11 +56,17 @@ $(document).ready(function() {
     
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
-      $('#next_button').html()
+      $('#next_button').append($('<a href="/next_question" id="question_next">Next Question</a>'));
       $("#profile div:last-child").slideDown();
 
       $("#participant_survey div:first-child").addClass("current_question");
+      for (var)
       $('.current_question').show(); 
+
+      $('#question_next').click(function (e) {
+        e.preventDefault();
+       
+        $('#participant_survey > div.current_question').removeClass('current_question').next("div").addClass('current_question')
 
 
 
@@ -77,7 +84,7 @@ $(document).ready(function() {
         }
         });
       });
-
+      })
     });
   });
 

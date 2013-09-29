@@ -212,6 +212,7 @@ footer {
 
 
 .current_question{
+  background-color: yellow;
   display: normal;
 }
 
