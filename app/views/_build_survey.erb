@@ -1,22 +1,21 @@
-<div id="build_survey">
-<h3>create survey</h3>
-<h4>survey name: <%= @survey.name %></h4>
-<h4>survey id: <%= @survey.id %></h4>
+<div class="new_survey_container">
+<p>Survey Name: <%= @survey.name.capitalize %></p>
+<p>Survey ID: <%= @survey.id %></p>
+<h4>Please complete the following questions and answer choices</h4>
 <!--  one survey; X questions; 4 answers -->
 <% @survey.questions.each_with_index do |question, index| %>
-  <form action = "/build_survey" method="POST">
-    <input type="hidden" name="survey" value="<%= @survey.id %>"
-    <div class="each_question">
+  <form id="build_survey" action="/build_survey" method="POST">
+    <div>
       <label for="question<%= index %> ">Question #<%= index + 1 %></label>
       <input id="question<%= index %>" type="text" name="question[text<%= index %>]">
         <% question.choices.each_with_index do |choice, index2| %>
         <ul>
-        <li><label for="choice<%= index2 %>">Choice <%= index2 + 1 %></label>
-        <input id="choice<%= index2 %>" type="text" name="response<%= index %>[choice<%= index2 %>]"></li>
+        <li><input id="choice<%= index2 %>" type="text" name="response<%= index %>[choice<%= index2 %>]" placeholder="Enter Answer Choice <%= index2 + 1 %>"></li>
         </ul>
         <% end %>
     <div>
       <% end %>
+    <input type="hidden" name="survey" value="<%= @survey.id %>">
     <input type="Submit">
   </form>
 </div>

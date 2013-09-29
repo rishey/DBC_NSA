@@ -1,9 +1,9 @@
-<div>
+<div class="new_survey_container">
 <h3>Create New Survey:</h3>
 
 <form id='create_new_survey' class='survey_form' action="/survey/new" method="POST" >
-  <input type="text" name="survey" placeholder="Survey Name">
-  <input type="number" min='0' max='10' name="num_questions" placeholder="Number of Questions">
+  <input type="text" name="survey" placeholder="Survey Name" required>
+  <input type="number" min='1' max='10' name="num_questions" placeholder="Number of Questions" required>
   <input class='spy_button' type='submit' value='spy' >
 </form>
 </div>

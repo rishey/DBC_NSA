@@ -1,4 +1,7 @@
 class Survey < ActiveRecord::Base
+
+  # validates :name, :length => {:minimum => 3, :message => "Must be at least 3 characters!"}
+
   belongs_to :creator, class_name: "User"
   has_many :participants, class_name: "User"
   has_many :questions
