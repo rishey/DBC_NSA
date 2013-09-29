@@ -11,6 +11,10 @@
   color: black;
 }
 
+ul{
+  list-style-type: none;
+}
+
 nav ul li {
   list-style-type: none;
   float: right;
@@ -37,16 +41,14 @@ nav ul li a{
   margin-top: 130px;
 }
 
-.profile h1{
-  margin: 0 0 0 0;
+.profile h3, h1{
+  color: rgb(59, 89, 152);
+  color: rgba(59, 89, 152, 0.9);
+  font-weight: bold;
 }
 
 .errors {
   color: white;
-}
-
-.error ul{
-  list-style-type: none;  
 }
 
 .error li{
@@ -83,7 +85,7 @@ nav ul li a{
   color: white;
 }
 
-.signup_button, .spy_button, .signin_button {
+.signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button{
   border: 1px solid;
   border-color: #3b6e22 #3b6e22 #2c5115;
   cursor: pointer;
@@ -138,8 +140,8 @@ nav ul li a{
   float: left;  
 }
 
-.survey_form input{
-   -webkit-border-radius: 3px;
+.survey_form input, .build_survey input{
+  -webkit-border-radius: 3px;
   border-radius: 3px;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
@@ -147,6 +149,17 @@ nav ul li a{
 .survey_form input:nth-child(2){
   width: 172px;
 }
+
+thead{
+  border-bottom: 1px solid rgb(59, 89, 152);  
+}
+
+td, th{
+  white-space: nowrap;
+  padding: 10px 25px 0 0;
+}
+
+tr:nth-child(even) {background: #CCC}
 
 footer {
   position: absolute;

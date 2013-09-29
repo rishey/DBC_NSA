@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#new_survey').click(function (e) {
       e.preventDefault();
       $(this).hide();
-        var url = $(this).attr('href');
+        var url = $(this).attr('action');
 
         $.get(url, function(response){
           $('.profile').append(response);
@@ -51,8 +51,7 @@ $(document).ready(function() {
 
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
-      $("#profile div:last-child").slideDown()   
-    
+      $("#profile div:last-child").slideDown();
       $("#participant_survey").submit(function(e){
         e.preventDefault();
         var url = $(this).attr('action');
@@ -63,8 +62,8 @@ $(document).ready(function() {
           url: url,
           data: form_data,
           success: function(response){
-            $("#profile div:last-child").html(response)
-          }
+            $("#profile div:last-child").html(response);
+        }
         })
       })
 
