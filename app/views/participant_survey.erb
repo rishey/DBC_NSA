@@ -1,17 +1,17 @@
-<h1><%= @survey.name %> survey!</h1>
-
+<div class='survey'>
+<h3><%= @survey.name %></h3>
 <form  action="/participant_submit" method="post" id="participant_survey" >
-  <% @survey.questions.each_with_index do |question, index| %> 
-  <div>
-    <h4><%= question.text %></h4>
-      <% question.choices.each_with_index do |choice, index2|  %>
-    <input type="radio" name="question[<%= index %>]"   value="<%= choice.id %>"><%= choice.choice %><br>
-      <% end %>
-    <span id="next_button"></span>
-  </div>
-  <% end %>
-  <p id="test">test</p>
-  <input type="hidden" name="survey_id" value="<%= @survey.id %>">
-  <input type="submit" value="submit">
+<% @survey.questions.each_with_index do |question, index| %> 
+<div>
+<h4><%= question.text %></h4>
+<% question.choices.each_with_index do |choice, index2|  %>
+   <input type="radio" name="question[<%= index %>]" value="<%= choice.id %>"><%= choice.choice %><br>
+<% end %>
+<p id="next_button"></p>
+</div>
+<% end %>
+<input type="hidden" name="survey_id" value="<%= @survey.id %>">
+<input class='submit_survey_button'type="submit" value="submit">
+>>>>>>> csses
 </form>
-
+</div>

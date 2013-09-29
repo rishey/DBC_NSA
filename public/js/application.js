@@ -45,6 +45,7 @@ $(document).ready(function() {
         });
    });
 
+
   $("#survey_take").submit(function(e){
     e.preventDefault();
     $("#test").addClass("current_question");
