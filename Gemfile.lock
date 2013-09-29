@@ -21,6 +21,7 @@ GEM
     eventmachine (1.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    googlecharts (1.6.8)
     i18n (0.6.1)
     json (1.8.0)
     multi_json (1.6.1)
@@ -67,6 +68,7 @@ DEPENDENCIES
   activesupport
   bcrypt-ruby
   faker
+  googlecharts (~> 1.6.8)
   json
   pg
   rake
