@@ -1,14 +1,28 @@
 <div class="profile">
+
 <h1>stats</h1>	
 <h2>For Survey: <%= @survey.name %></h2>
 <h4>Survey was completed <%= @completed_times %> times. </h3>
 <ol>Questions:<br>
 	<% @questions.each do |question| %>
+		<% @graph_choices=[] %>
+		<% @graph_choice_nums=[] %>
 		<li><%= question.text %><br>
 			<% question.choices.each do |choice| %>
 					<%= choice.choice %>
 					chosen <%= choice.responses.count %> times.<br>
+							<% @graph_choices << choice.choice %>
+							<% @graph_choice_nums <<  choice.responses.count %>
 			<% end %></li>
+			<!-- insert chart here hopefully -->
+				
+<% chart = Gchart.pie_3d(title: question.text , size: '400x200', data: @graph_choice_nums, labels: @graph_choices ) %>
+
+<img src="<%= chart %>"
+
+			<!-- end insert chart hopefulness -->
 	<% end %>
 	</ol>
 </div>
+
+

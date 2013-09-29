@@ -19,7 +19,7 @@ gem 'bcrypt-ruby'
 gem 'shotgun'
 
 gem 'json'
-
+gem "googlecharts", "~> 1.6.8"
 group :test do
   gem 'faker'
   gem 'rspec'
