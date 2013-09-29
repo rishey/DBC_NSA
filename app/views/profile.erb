@@ -1,7 +1,12 @@
 <div class='profile' id='profile'>
   <div id="profile_header">
+  <div>
     <h1>profile</h1>
     <span>welcome back <%= current_user.name %></span></br>
+    <form id='new_survey' method='GET' action='/survey/new'>
+    <button class='new_survey_button' type='submit'>New Survey</button>
+    </form>
+  </div>
   </div>
 
   <div id="participant_surveys">
@@ -9,7 +14,7 @@
   <table id='participant_survey_table'>
       <thead>
         <th>Name</th>
-        <th>Take Survey</th>
+        <th>Take</th>
       </thead>
       <tbody>
         <% if @available %>
@@ -19,7 +24,7 @@
           <td>
             <!-- <a id='participate' href="/survey/<%= survey.id %>"> Take </a> -->
             <form method='GET' action="/survey/<%=survey.id%>">
-            <button class='take_button' type='submit'>Take</button>
+            <button class='take_button' type='submit'>take</button>
             </form>  
           </td>
         </tr>
@@ -44,7 +49,7 @@
           <td> 
             <!-- <a href="/stats/survey/<%=survey.id%>"> Results </a> -->
             <form method='GET' action="/stats/survey/<%=survey.id%>">
-            <button class='results_button' type='submit'>Results</button>
+            <button class='results_button' type='submit'>results</button>
             </form> 
           </td>
         </tr>
@@ -56,12 +61,6 @@
   
   <br>
   
-  <div>
-    <!-- <a id='new_survey' href="/survey/new">New Survey</a> -->
-    <form id='new_survey' method='GET' action='/survey/new'>
-      <button class='new_survey_button' type='submit'>New Survey</button></form>
-  </div>
-
   <div class ="for_new_survey">
   </div>
 </div> 
