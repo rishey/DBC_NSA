@@ -16,22 +16,35 @@ $(document).ready(function() {
 
         $.get(url, function(response){
           $('.profile').append(response);
-
+          
           $('#create_new_survey').submit(function(e) {
-    
-          e.preventDefault();
-          $(this).hide();
-          var url = $(this).attr('action');
-          var data = $(this).serialize();
-          // console.log(url);
-          // console.log(data);
+            e.preventDefault();
+            $(".new_survey_container").hide();
+            var url = $(this).attr('action');
+            var data = $(this).serialize();
+
             $.post(url, data, function(response) {
-            window.alert(response);
-            $('.profile').append(response);
+              $('.profile').append(response);
+
+              $('#build_survey').submit(function(e) {
+                e.preventDefault();
+                $(".new_survey_container").hide();
+      
+                var url = $(this).attr('action');
+                var data = $(this).serialize();
+      
+                $.post(url, data, function(response) {
+                  $('.profile').append(response);
+                });
+              });
             });
           });
         });
    });
+
+// $(this).remove();
+      // $('#new_survey').show();
+
     // $('#test').submit(function(e) {
     //   console.log(e);
     //   e.preventDefault();
@@ -49,18 +62,6 @@ $(document).ready(function() {
       // $('create_survey').show();
     // });
 
-    $('#build_survey').submit(function(e) {
-      e.preventDefault();
-      $(this).hide();
-      
-      var url = $(this).attr('action');
-      var data = $(this).serialize();
-      
-      $.post(url, data, function(response) {
-        $('.profile').append(response);
-      });
-      // $(this).remove();
-      // $('#new_survey').show();
-    });
+
 
 });

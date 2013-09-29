@@ -28,7 +28,7 @@ end
 get '/survey/completed/:id' do
   @survey = Survey.find(params[:id].to_i)
   @user = User.find(session[:user_id])
-  erb :survey_complete
+  erb :_survey_complete
 end
 
 # POSTS #
@@ -52,7 +52,7 @@ post "/survey/new" do
         end
       end
       
-      if request.accept?
+      if request.xhr?
         erb :_build_survey, layout: false
       else
         redirect "/_build_survey/#{@survey.id}"
@@ -66,15 +66,19 @@ end
 
 post "/build_survey" do
   survey_id = params[:survey]
-  survey = Survey.find(survey_id)
-  survey.questions.each_with_index do |question, index|
+  @survey = Survey.find(survey_id)
+  @survey.questions.each_with_index do |question, index|
     question.update_attributes(text: params[:question][:"text#{index}"])
     
     question.choices.each_with_index do |choice, index2|
       choice.update_attributes(choice: params[:"response#{index}"][:"choice#{index2}"])        
     end
   end
-  redirect "/survey/admin/#{survey.id}"
+  if request.xhr?
+    erb :_survey_complete, layout: false
+  else
+    redirect "/survey/admin/#{survey.id}" 
+  end
 end 
 
 
