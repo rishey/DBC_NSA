@@ -27,6 +27,33 @@ nav ul li a{
   padding-right: 30px;
 }
 
+thead{
+  border-bottom: 1px solid rgb(59, 89, 152);  
+}
+
+td, th{
+  white-space: nowrap;
+  padding: 8px 25px 5px 0;
+}
+
+tr:nth-child(even) {
+  background: #CCC;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  float: right;
+  text-align: center;
+  width: 100%;
+}
+
+h3, h1{
+  color: rgb(59, 89, 152);
+  color: rgba(59, 89, 152, 0.9);
+  font-weight: bold;
+}
+
 .navbar ul{
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -36,15 +63,9 @@ nav ul li a{
   padding-left: 100px;
 }
 
-.profile{
+.profile, .survey{
   float: left;
   margin-top: 130px;
-}
-
-.profile h3, h1{
-  color: rgb(59, 89, 152);
-  color: rgba(59, 89, 152, 0.9);
-  font-weight: bold;
 }
 
 .errors {
@@ -86,17 +107,12 @@ nav ul li a{
 }
 
 .results_button, .take_button{
-/*border: 1px solid;*/
   border-color: #3b6e22 #3b6e22 #2c5115;
   cursor: pointer;
-  /*background-color: #69a74e;*/
   color: white;
-  /*letter-spacing: 1px;*/
-  /*position: relative;*/
   -webkit-border-radius: 5px;
   border-radius: 10px;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  /*background: -webkit-linear-gradient(top, #67ae55, #578843);*/
   background: rgb(59, 89, 152);
   background: rgba(59, 89, 152, 0.9);
   -webkit-box-shadow: inset 0 1px 1px #a4e388;
@@ -105,7 +121,7 @@ nav ul li a{
 
 }
 
-.signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button, .create_complete_button{
+.signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button, .create_complete_button, .submit_survey_button{
   border: 1px solid;
   border-color: #3b6e22 #3b6e22 #2c5115;
   cursor: pointer;
@@ -170,17 +186,16 @@ nav ul li a{
   width: 172px;
 }
 
-thead{
-  border-bottom: 1px solid rgb(59, 89, 152);  
+.new_survey_button{
+  top: 18px;
 }
 
-td, th{
-  white-space: nowrap;
-  padding: 8px 25px 5px 0;
+.profile h3:first-of-type{
+  padding-top: 25px;
 }
 
-tr:nth-child(even) {
-  background: #CCC;
+.survey h3{
+  margin: 0 0 0 0;
 }
 
 footer {
@@ -199,22 +214,5 @@ footer {
 .current_question{
   background-color: yellow;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
