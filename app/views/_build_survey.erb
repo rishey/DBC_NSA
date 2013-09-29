@@ -1,10 +1,10 @@
 <div class="new_survey_container">
-<p>Survey Name: <%= @survey.name.capitalize %></p>
+<h3>Survey Name: <%= @survey.name.capitalize %></h3>
 <p>Survey ID: <%= @survey.id %></p>
-<h4>Please complete the following questions and answer choices</h4>
+<h3>Please complete the following questions and answer choices:</h3>
 <!--  one survey; X questions; 4 answers -->
 <% @survey.questions.each_with_index do |question, index| %>
-  <form id="build_survey" action="/build_survey" method="POST">
+  <form class='build_survey' id="build_survey" action="/build_survey" method="POST">
     <div>
       <label for="question<%= index %> ">Question #<%= index + 1 %></label>
       <input id="question<%= index %>" type="text" name="question[text<%= index %>]">
@@ -16,7 +16,7 @@
     <div>
       <% end %>
     <input type="hidden" name="survey" value="<%= @survey.id %>">
-    <input type="Submit">
+    <input class='build_survey_button'type='Submit' value='Create'>
   </form>
 </div>
 

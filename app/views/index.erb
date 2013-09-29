@@ -40,11 +40,12 @@
     </div>
     <% if @errors %>
     <div class='error'>
-    <% @errors.each do |error, message| %>
-      <ul>
+    <ul>
+      <% @errors.each do |error, message| %>
         <li><%= error.upcase %> <%= message %></li>
-      </ul>
+        <br>
     <% end %>
+    </ul>
    </div>
   <% end %>
   </form>
