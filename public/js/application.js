@@ -16,6 +16,8 @@ $(document).ready(function() {
         var url = $(this).attr('action');
 
         $.get(url, function(response){
+          $('#participant_surveys').hide();
+          $('#created_surveys').hide();
           $('.profile').append(response);
           
           $('#create_new_survey').submit(function(e) {
@@ -64,8 +66,8 @@ $(document).ready(function() {
           success: function(response){
             $("#profile div:last-child").html(response);
         }
-        })
-      })
+        });
+      });
 
     });
   });

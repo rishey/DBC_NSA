@@ -15,8 +15,13 @@
         <% if @available %>
         <% @available.each do |survey| %>
         <tr>
-          <td>  <%=survey.name%> </td>
-          <td><a id='participate' href="/survey/<%= survey.id %>"> Take the survey </a></td>
+          <td><%=survey.name%></td>
+          <td>
+            <!-- <a id='participate' href="/survey/<%= survey.id %>"> Take </a> -->
+            <form method='GET' action="/survey/<%=survey.id%>">
+            <button class='take_button' type='submit'>Take</button>
+            </form>  
+          </td>
         </tr>
         <% end %>
     <% end %>
@@ -36,7 +41,12 @@
           <% @created.each do |survey| %>
         <tr>
           <td>  <%=survey.name%> </td>
-          <td> <a href="/stats/survey/<%=survey.id%>"> Results </a></td>
+          <td> 
+            <!-- <a href="/stats/survey/<%=survey.id%>"> Results </a> -->
+            <form method='GET' action="/stats/survey/<%=survey.id%>">
+            <button class='results_button' type='submit'>Results</button>
+            </form> 
+          </td>
         </tr>
         <% end %>
     <% end %>
@@ -46,7 +56,7 @@
   
   <br>
   
-  <div class=''>
+  <div>
     <!-- <a id='new_survey' href="/survey/new">New Survey</a> -->
     <form id='new_survey' method='GET' action='/survey/new'>
       <button class='new_survey_button' type='submit'>New Survey</button></form>
