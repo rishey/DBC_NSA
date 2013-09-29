@@ -190,3 +190,31 @@ footer {
   text-align: center;
   width: 100%;
 }
+
+/*#participant_survey div{
+  display: none;
+}
+*/
+
+.current_question{
+  background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
