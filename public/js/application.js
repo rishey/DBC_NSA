@@ -45,17 +45,21 @@ $(document).ready(function() {
         });
    });
 
-  $("#participate").click(function(e){
+  $("#survey_take").submit(function(e){
     e.preventDefault();
-    // $("#profile").hide();
+    $("#test").addClass("current_question");
     $("#profile div").slideUp();
-    var url = $(this).attr('href');
+    console.log("wtf")
 
+    var url = $(this).attr('href');
+    
+
+    
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
       $("#profile div:last-child").slideDown();
 
-      $("#participant_survey div:first-child").addClass('active');
+ 
 
       $("#participant_survey").submit(function(e){
         e.preventDefault();
