@@ -16,7 +16,7 @@
 			<% end %></li>
 			<!-- insert chart here hopefully -->
 				
-<% chart = Gchart.pie_3d(title: question.text , size: '400x200', data: @graph_choice_nums, labels: @graph_choices ) %>
+<% chart = Gchart.pie_3d(title: question.text , size: '400x200', data: @graph_choice_nums, labels: @graph_choices, bar_colors: '4D68A2,A57A2E,E9EBF1,B0883F') %>
 
 <img src="<%= chart %>"
 
