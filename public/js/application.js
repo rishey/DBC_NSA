@@ -52,6 +52,9 @@ $(document).ready(function() {
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
       $("#profile div:last-child").slideDown();
+
+      $("#participant_survey div:first-child").addClass('active');
+
       $("#participant_survey").submit(function(e){
         e.preventDefault();
         var url = $(this).attr('action');
@@ -63,7 +66,7 @@ $(document).ready(function() {
           data: form_data,
           success: function(response){
             $("#profile div:last-child").html(response);
-        }
+          }
         })
       })
 
