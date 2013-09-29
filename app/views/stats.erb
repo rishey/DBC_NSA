@@ -1,8 +1,8 @@
 <div class="profile">
 
 <h1>stats</h1>	
-<h2>For Survey: <%= @survey.name %></h2>
-<h4>Survey was completed <%= @completed_times %> times. </h3>
+<h2>Survey: <%= @survey.name %></h2>
+<h4>Survey was completed <%= @completed_times %> times </h3>
 <ol>Questions:<br>
 	<% @questions.each do |question| %>
 		<% @graph_choices=[] %>
