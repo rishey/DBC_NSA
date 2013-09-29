@@ -206,16 +206,21 @@ footer {
   width: 100%;
 }
 
-/*#participant_survey div{
+#participant_survey div{
   display: none;
 }
-*/
+
 
 .current_question{
-  background-color: yellow;
+  display: normal;
 }
+
 
 input[type=radio] {
     margin: 3px 25px 4px 0 ;
+  }
+
+.for_new_survey div{
+  margin-top: 0;
 }
 

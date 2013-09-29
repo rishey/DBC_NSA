@@ -48,19 +48,20 @@ $(document).ready(function() {
 
   $("#survey_take").submit(function(e){
     e.preventDefault();
-    $("#test").addClass("current_question");
     $("#profile div").slideUp();
-    console.log("wtf")
 
-    var url = $(this).attr('href');
+    var url = $(this).attr('action');
     
-
     
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
+      $('#next_button').html()
       $("#profile div:last-child").slideDown();
 
- 
+      $("#participant_survey div:first-child").addClass("current_question");
+      $('.current_question').show(); 
+
+
 
       $("#participant_survey").submit(function(e){
         e.preventDefault();
