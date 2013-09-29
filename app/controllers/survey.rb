@@ -83,7 +83,7 @@ post "/build_survey" do
     end
   end
   if request.xhr?
-    erb :_survey_complete, layout: false
+    erb :_create_complete, layout: false
   else
     redirect "/survey/admin/#{survey.id}" 
   end
