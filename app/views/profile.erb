@@ -1,47 +1,55 @@
 <div class='profile' id='profile'>
-  <h1>profile</h1>
-  <span>welcome back <%= current_user.name %></span></br>
+  <div id="profile_header">
+    <h1>profile</h1>
+    <span>welcome back <%= current_user.name %></span></br>
+  </div>
 
-<h3>Available participant surveys</h3>
-<table id='participant_survey_table'>
-    <thead>
-      <th>Name</th>
-      <th>Take Survey</th>
-    </thead>
-    <tbody>
-      <% if @available %>
-      <% @available.each do |survey| %>
-      <tr>
-        <td>  <%=survey.name%> </td>
-        <td> <a href="/survey/<%= survey.id %>"> Take the survey </a></td>
-      </tr>
-      <% end %>
-  <% end %>
-  </tbody>
-</table>
+  <div id="participant_surveys">
+  <h3>Available participant surveys</h3>
+  <table id='participant_survey_table'>
+      <thead>
+        <th>Name</th>
+        <th>Take Survey</th>
+      </thead>
+      <tbody>
+        <% if @available %>
+        <% @available.each do |survey| %>
+        <tr>
+          <td>  <%=survey.name%> </td>
+          <td><a id='participate' href="/survey/<%= survey.id %>"> Take the survey </a></td>
+        </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
 
-<h3>Your created surveys</h3>
+  <div id="created_surveys">
+  <h3>Your created surveys</h3>
+  <table id='survey_table'>
+      <thead>
+        <th>Name</th>
+        <th>Results</th>
+      </thead>
+      <tbody>
+        <% if @created %>
+          <% @created.each do |survey| %>
+        <tr>
+          <td>  <%=survey.name%> </td>
+          <td> <a href="/stats/survey/<%=survey.id%>"> Results </a></td>
+        </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+  
+  <br>
+  
+  <div class=''>
+    <a id='new_survey' href="/survey/new">New Survey</a>
+  </div>
 
-<table id='survey_table'>
-    <thead>
-      <th>Name</th>
-      <th>Results</th>
-    </thead>
-    <tbody>
-      <% if @created %>
-        <% @created.each do |survey| %>
-      <tr>
-        <td>  <%=survey.name%> </td>
-        <td> <a href="/stats/survey/<%=survey.id%>"> Results </a></td>
-      </tr>
-      <% end %>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-<div class=''>
-<a id='new_survey' href="/survey/new">New Survey</a>
-</div>
-
+  <div class ="for_new_survey">
+  </div>
 </div> 
