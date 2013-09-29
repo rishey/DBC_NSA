@@ -1,0 +1,10 @@
+<div class="create_complete_container">
+<h1>Thank you for creating the <%= @survey.name %> Survey</h1>
+
+<p>We at the agency appreciate your data collection efforts</p>
+
+<!-- <a href="/profile/<%# session[:user_id] %> ">profile</a> -->
+<form method='GET' action="/profile/<%=session[:user_id]%>">
+<button class='create_complete_button' type='submit'>profile</button>
+</form> 
+</div>
