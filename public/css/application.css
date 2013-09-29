@@ -215,4 +215,7 @@ footer {
   background-color: yellow;
 }
 
+input[type=radio] {
+    margin: 3px 25px 4px 0 ;
+}
 

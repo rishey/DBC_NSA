@@ -5,13 +5,14 @@
 <div>
 <h4><%= question.text %></h4>
 <% question.choices.each_with_index do |choice, index2|  %>
+<%if choice.choice != '' %>
    <input type="radio" name="question[<%= index %>]" value="<%= choice.id %>"><%= choice.choice %><br>
+<% end %>
 <% end %>
 <p id="next_button"></p>
 </div>
 <% end %>
 <input type="hidden" name="survey_id" value="<%= @survey.id %>">
 <input class='submit_survey_button'type="submit" value="submit">
->>>>>>> csses
 </form>
 </div>
