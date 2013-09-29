@@ -45,7 +45,9 @@ $(document).ready(function() {
         });
    });
 
-  $("#participate").click(function(e){
+
+
+  $("#survey_take").submit(function(e){
     e.preventDefault();
     // $("#profile").hide();
     $("#profile div").slideUp();
