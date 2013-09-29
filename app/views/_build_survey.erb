@@ -1,7 +1,7 @@
 <div class="new_survey_container">
-<h3>create survey</h3>
-<h4>survey name: <%= @survey.name %></h4>
-<h4>survey id: <%= @survey.id %></h4>
+<p>Survey Name: <%= @survey.name.capitalize %></p>
+<p>Survey ID: <%= @survey.id %></p>
+<h4>Please complete the following questions and answer choices</h4>
 <!--  one survey; X questions; 4 answers -->
 <% @survey.questions.each_with_index do |question, index| %>
   <form id="build_survey" action="/build_survey" method="POST">

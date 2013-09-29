@@ -9,6 +9,7 @@ $(document).ready(function() {
     var request = $.ajax({ url: $(this).attr('href'), type: 'delete' });
     request.done(function () { window.location = "/"; });
   });
+
     $('#new_survey').click(function (e) {
       e.preventDefault();
       $(this).hide();
@@ -42,26 +43,32 @@ $(document).ready(function() {
         });
    });
 
-// $(this).remove();
-      // $('#new_survey').show();
+  $("#participate").click(function(e){
+    e.preventDefault();
+    // $("#profile").hide();
+    $("#profile div").slideUp();
+    var url = $(this).attr('href');
 
-    // $('#test').submit(function(e) {
-    //   console.log(e);
-    //   e.preventDefault();
-    //   $(this).hide();
+    $.get(url, function(response){
+      $(response).appendTo('.for_new_survey');
+      $("#profile div:last-child").slideDown()   
+    
+      $("#participant_survey").submit(function(e){
+        e.preventDefault();
+        var url = $(this).attr('action');
+        var form_data = $(this).serialize();
 
-    //   var url = $(this).attr('action');
-    //   var data = $(this).serialize();
-    //   console.log(url);
-    //   console.log(data);
-      // $.post(url, data, function(response) {
-      //   window.alert(response)
-      //   $('.profile').append(response);
-      // });
-      // // $(this).remove();
-      // $('create_survey').show();
-    // });
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: form_data,
+          success: function(response){
+            $("#profile div:last-child").html(response)
+          }
+        })
+      })
 
-
+    });
+  });
 
 });

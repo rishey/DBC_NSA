@@ -22,13 +22,21 @@ end
 
 get '/survey/:id' do
   @survey = Survey.find(params[:id].to_i)
-  erb :participant_survey
+  if request.xhr?
+    erb :participant_survey, layout: false
+  else
+    erb :participant_survey
+  end
 end
 
 get '/survey/completed/:id' do
   @survey = Survey.find(params[:id].to_i)
   @user = User.find(session[:user_id])
-  erb :_survey_complete
+  if request.xhr?
+    erb :_survey_complete, layout: false
+  else
+    erb :_survey_complete
+  end
 end
 
 # POSTS #
