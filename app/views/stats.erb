@@ -1,19 +1,23 @@
-<div class="profile">
+<div class='stats'>
 
 <h1>stats</h1>	
 <h2>Survey: <%= @survey.name %></h2>
-<h4>Survey was completed <%= @completed_times %> times </h3>
-<ol>Questions:<br>
+<h3>Survey was completed <%= @completed_times %> times </h3>
+<span>Questions:</span>
+<ol>
 	<% @questions.each do |question| %>
 		<% @graph_choices=[] %>
 		<% @graph_choice_nums=[] %>
 		<li><%= question.text %><br>
 			<% question.choices.each do |choice| %>
+			<% if choice.choice != '' %>
 					<%= choice.choice %>
-					chosen <%= choice.responses.count %> times.<br>
+					chosen <%= choice.responses.count %> times<br>
 							<% @graph_choices << choice.choice %>
 							<% @graph_choice_nums <<  choice.responses.count %>
-			<% end %></li>
+			<% end %>
+			<% end %>
+		</li>
 			<!-- insert chart here hopefully -->
 				
 <% chart = Gchart.pie_3d(title: question.text , size: '400x200', data: @graph_choice_nums, labels: @graph_choices, bar_colors: '4D68A2,A57A2E,E9EBF1,B0883F') %>
@@ -21,6 +25,7 @@
 <img src="<%= chart %>"
 
 			<!-- end insert chart hopefulness -->
+
 	<% end %>
 	</ol>
 </div>
