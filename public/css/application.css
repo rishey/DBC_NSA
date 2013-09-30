@@ -121,7 +121,7 @@ h3, h1{
 
 }
 
-.signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button, .back_to_profile, .submit_survey_button{
+#question_next, .signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button, .back_to_profile, .submit_survey_button{
   border: 1px solid;
   border-color: #3b6e22 #3b6e22 #2c5115;
   cursor: pointer;
@@ -211,7 +211,6 @@ footer {
 }
 
 .current_question{
-  background-color: yellow;
   display: normal;
 }
 
