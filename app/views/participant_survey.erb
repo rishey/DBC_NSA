@@ -9,9 +9,9 @@
    <input type="radio" name="question[<%= index %>]" value="<%= choice.id %>"><%= choice.choice %><br>
 <% end %>
 <% end %>
-<p id="next_button"></p>
 </div>
 <% end %>
+<p id="next_button"></p>
 <input type="hidden" name="survey_id" value="<%= @survey.id %>">
 <input class='submit_survey_button'type="submit" value="submit">
 </form>

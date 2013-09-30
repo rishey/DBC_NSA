@@ -53,6 +53,7 @@ $(document).ready(function() {
 
     var url = $(this).attr('action');
     
+    survey1 = new Survey($(this).data('name'), $(this).data('questions'));
     
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
@@ -60,16 +61,18 @@ $(document).ready(function() {
       $("#profile div:last-child").slideDown();
 
       $("#participant_survey div:first-child").addClass("current_question");
-      for (var)
-      $('.current_question').show(); 
-
-      $('#question_next').click(function (e) {
-        e.preventDefault();
-       
-        $('#participant_survey > div.current_question').removeClass('current_question').next("div").addClass('current_question')
 
 
+      for (i=survey1.num_questions; i > 0; i++){
+      $('.current_question').show();
+        $('#question_next').click(function(e) {
+          console.log(i)
+          e.preventDefault();
+          $('#participant_survey div:nth-child(' + i + ')').slideUp().removeClass('current_question');
+          $('#participant_survey div:nth-child(' + i + ')').addClass('current_question')
+      });
 
+      }
       $("#participant_survey").submit(function(e){
         e.preventDefault();
         var url = $(this).attr('action');
@@ -84,7 +87,7 @@ $(document).ready(function() {
         }
         });
       });
-      })
+      // })
     });
   });
 
