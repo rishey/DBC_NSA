@@ -45,6 +45,7 @@ $(document).ready(function() {
         });
    });
 
+  
 
   $("#survey_take").submit(function(e){
     e.preventDefault();
@@ -52,17 +53,26 @@ $(document).ready(function() {
 
     var url = $(this).attr('action');
     
+    survey1 = new Survey($(this).data('name'), $(this).data('questions'));
     
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
-      $('#next_button').html()
+      $('#next_button').append($('<a href="/next_question" id="question_next">Next Question</a>'));
       $("#profile div:last-child").slideDown();
 
       $("#participant_survey div:first-child").addClass("current_question");
-      $('.current_question').show(); 
 
 
+      for (i=survey1.num_questions; i > 0; i++){
+      $('.current_question').show();
+        $('#question_next').click(function(e) {
+          console.log(i)
+          e.preventDefault();
+          $('#participant_survey div:nth-child(' + i + ')').slideUp().removeClass('current_question');
+          $('#participant_survey div:nth-child(' + i + ')').addClass('current_question')
+      });
 
+      }
       $("#participant_survey").submit(function(e){
         e.preventDefault();
         var url = $(this).attr('action');
@@ -77,7 +87,7 @@ $(document).ready(function() {
         }
         });
       });
-
+      // })
     });
   });
 
