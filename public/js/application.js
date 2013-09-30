@@ -47,9 +47,9 @@ $(document).ready(function() {
 
   
 
-  $("#survey_take").submit(function(e){
+  $(".survey_take").submit(function(e){
     e.preventDefault();
-    $("#profile div").slideUp();
+    $("#profile div").slideUp("slow");
 
     var url = $(this).attr('action');
     
@@ -58,22 +58,33 @@ $(document).ready(function() {
     $.get(url, function(response){
       $(response).appendTo('.for_new_survey');
       $('#next_button').append($('<a href="/next_question" id="question_next">Next Question</a>'));
-      $("#profile div:last-child").slideDown();
+      $("#profile div:last-child").slideDown("slow");
 
       $("#participant_survey div:first-child").addClass("current_question");
+      $('.submit_survey_button').hide()
 
-
-      for (i=survey1.num_questions; i > 0; i++){
+      var counter = 1
+      
       $('.current_question').show();
         $('#question_next').click(function(e) {
-          console.log(i)
           e.preventDefault();
-          $('#participant_survey div:nth-child(' + i + ')').slideUp().removeClass('current_question');
-          $('#participant_survey div:nth-child(' + i + ')').addClass('current_question')
-      });
 
-      }
-      $("#participant_survey").submit(function(e){
+          if (counter < (survey1.num_questions - 1)){
+            $('#participant_survey div:nth-child(' + counter + ')').slideUp("slow", function() {
+              $(this).removeClass('current_question');
+              $('#participant_survey div:nth-child(' + (counter + 1) + ')').addClass('current_question').slideDown("slow");
+              counter++ });
+          } else if (counter === (survey1.num_questions - 1)){
+            $('#participant_survey div:nth-child(' + counter + ')').slideUp("slow", function() {
+              $(this).removeClass('current_question');
+              $('#participant_survey div:nth-child(' + (counter + 1) + ')').addClass('current_question').slideDown("slow");
+              counter++;
+              $('#next_button').hide()
+              $('.submit_survey_button').show() });
+          }
+        });
+      
+      $(".submit_survey_button").submit(function(e){
         e.preventDefault();
         var url = $(this).attr('action');
         var form_data = $(this).serialize();
@@ -85,6 +96,7 @@ $(document).ready(function() {
           success: function(response){
             $("#profile div:last-child").html(response);
         }
+
         });
       });
       // })
