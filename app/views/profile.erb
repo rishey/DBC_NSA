@@ -23,7 +23,7 @@
           <td><%=survey.name%></td>
           <td>
             <!-- <a id='participate' href="/survey/<%= survey.id %>"> Take </a> -->
-            <form id="survey_take" method='GET' action="/survey/<%=survey.id%>">
+            <form class="survey_take" method='GET' action="/survey/<%=survey.id%>" data-name="<%= survey.name %>" data-questions="<%= survey.questions.length %>">
             <button class='take_button' type='submit'>take</button>
             </form>  
           </td>
