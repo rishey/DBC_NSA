@@ -18,7 +18,7 @@ $(document).ready(function() {
         $.get(url, function(response){
           $('#participant_surveys').hide();
           $('#created_surveys').hide();
-          $('.profile').append(response);
+          $('.profile').html(response);
           
           $('#create_new_survey').submit(function(e) {
             e.preventDefault();
@@ -86,18 +86,14 @@ $(document).ready(function() {
       
       $(".submit_survey_button").submit(function(e){
         e.preventDefault();
+
         var url = $(this).attr('action');
         var form_data = $(this).serialize();
 
-        $.ajax({
-          type: "POST",
-          url: url,
-          data: form_data,
-          success: function(response){
-            $("#profile div:last-child").html(response);
-        }
-
-        });
+        $.post(url, data, function(response) {
+          console.log(response)
+          $('.profile').append(response);
+                });
       });
       // })
     });
