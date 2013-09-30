@@ -63,7 +63,7 @@ h3, h1{
   padding-left: 100px;
 }
 
-.profile, .survey{
+.profile, .survey, .stats{
   float: left;
   margin-top: 130px;
 }
@@ -121,7 +121,7 @@ h3, h1{
 
 }
 
-.signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button, .create_complete_button, .submit_survey_button{
+.signup_button, .spy_button, .signin_button, .new_survey_button, .build_survey_button, .back_to_profile, .submit_survey_button{
   border: 1px solid;
   border-color: #3b6e22 #3b6e22 #2c5115;
   cursor: pointer;
@@ -210,17 +210,19 @@ footer {
   display: none;
 }
 
-
 .current_question{
   display: normal;
 }
 
-
 input[type=radio] {
-    margin: 3px 25px 4px 0 ;
-  }
+  margin: 3px 25px 4px 0;
+}
 
 .for_new_survey div{
   margin-top: 0;
+}
+
+.stats ol{
+  float: left;
 }
 
